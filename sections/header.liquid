@@ -168,6 +168,26 @@
       {%- endif -%}
     {%- endif -%}
 
+    <form action="{{ routes.search_url }}" method="get" role="search" class="header-reference-search">
+      <input
+        class="header-reference-search__input"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="Search..."
+        aria-label="{{ 'general.search.search' | t }}"
+      >
+      <select class="header-reference-search__select" name="type" aria-label="Search category">
+        <option value="product">All categories</option>
+        <option value="article">Articles</option>
+        <option value="page">Pages</option>
+      </select>
+      <input type="hidden" name="options[prefix]" value="last">
+      <button class="header-reference-search__button" type="submit" aria-label="{{ 'general.search.search' | t }}">
+        {{- 'icon-search.svg' | inline_asset_content -}}
+      </button>
+    </form>
+
     {%- liquid
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
