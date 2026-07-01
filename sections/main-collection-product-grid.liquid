@@ -36,12 +36,37 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} collection-reference-layout">
   {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- liquid
+      assign current_first = paginate.current_offset | plus: 1
+      assign current_last = paginate.current_offset | plus: collection.products.size
+      assign active_display = section.settings.products_per_page
+    -%}
+    <div class="collection-reference-header page-width">
+      <nav class="collection-reference-breadcrumbs" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>{{ collection.title | escape }}</span>
+      </nav>
+    </div>
+
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
-      <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+      <facet-filters-form class="facets facets-vertical-sort collection-reference-toolbar page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">
+          <div class="collection-reference-title-block">
+            <h1 class="collection-reference-title">{{ collection.title | escape }}</h1>
+          </div>
+          <div class="collection-reference-toolbar__meta">
+            <span>Showing {{ current_first }} - {{ current_last }} of {{ collection.products_count }} products</span>
+          </div>
+          <div class="collection-reference-display">
+            <span>Display:</span>
+            <span class="{% if active_display == 24 %}is-active{% endif %}">24 per page</span>
+            <span class="{% if active_display == 36 %}is-active{% endif %}">36 per page</span>
+            <span class="{% if active_display == 48 %}is-active{% endif %}">48 per page</span>
+          </div>
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
               <h2 class="facet-filters__label caption-large text-body">
@@ -175,6 +200,7 @@
                     lazy_load: lazy_load,
                     skip_styles: skip_card_product_styles,
                     quick_add: section.settings.quick_add,
+                    show_quick_view: section.settings.show_quick_view,
                     section_id: section.id
                   %}
                 </li>
@@ -343,6 +369,12 @@
           "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
         }
       ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_view",
+      "default": true,
+      "label": "Show quick view link"
     },
     {
       "type": "header",
