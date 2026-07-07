@@ -1,0 +1,237 @@
+/* Custom Header Styling - Minimal to avoid conflicts */
+
+/* Header Background */
+.header-wrapper {
+  background-color: #1a4d4d !important;
+  border-bottom: 1px solid #0d3a3a;
+}
+
+.header-wrapper.gradient {
+  background: #1a4d4d !important;
+}
+
+/* Header Text Colors */
+.header__heading-link {
+  color: white;
+}
+
+.header__icon {
+  color: white;
+}
+
+.header__icon--account {
+  color: white;
+}
+
+.header__icon--cart {
+  color: white;
+}
+
+/* Search button highlight */
+.header-reference-search__button {
+  background-color: #a8d935;
+}
+
+.header-reference-search__button:hover {
+  background-color: #95c500;
+}
+
+/* Menu colors */
+.list-menu__item--link {
+  color: white;
+}
+
+.list-menu__item--link:hover {
+  color: #a8d935;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-reference-search {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__icons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .list-menu--inline {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-reference-search {
+    flex-direction: column;
+  }
+
+  .header-reference-search__input,
+  .header-reference-search__select {
+    width: 100%;
+  }
+}
+
+/* Filters Sidebar */
+.facets-wrapper {
+  width: 200px;
+  padding-right: 30px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.facets__disclosure-vertical {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 0;
+}
+
+.facets__summary {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #111;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0;
+}
+
+.facet-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.facet-checkbox input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Toolbar */
+.collection-reference-toolbar .facets-vertical-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.collection-reference-title-block {
+  flex: 0;
+}
+
+.collection-reference-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.collection-reference-toolbar__meta {
+  font-size: 13px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.collection-reference-display {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.collection-reference-display span {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.collection-reference-display span:first-child {
+  font-weight: 600;
+  color: #111;
+}
+
+.collection-reference-display span.is-active {
+  background-color: #e8e8e8;
+  font-weight: 600;
+  color: #111;
+}
+
+.facet-filters__sort {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  background-color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.pagination a,
+.pagination span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: #111;
+  font-size: 13px;
+}
+
+.pagination a:hover,
+.pagination a.is-active {
+  background-color: #111;
+  color: white;
+  border-color: #111;
+}
+
+.pagination .page-number.current {
+  background-color: #111;
+  color: white;
+  border-color: #111;
+}

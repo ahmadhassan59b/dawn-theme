@@ -1,0 +1,55 @@
+/* Custom Header Styling Only - No layout conflicts */
+
+/* Header Background Color */
+.header-wrapper {
+  background-color: #1a4d4d !important;
+  border-bottom: 1px solid #0d3a3a;
+}
+
+.header-wrapper.gradient {
+  background: #1a4d4d !important;
+}
+
+/* Header Text Colors */
+.header__heading-link {
+  color: white;
+}
+
+.header__icon {
+  color: white;
+}
+
+.header__icon--account {
+  color: white;
+}
+
+.header__icon--cart {
+  color: white;
+}
+
+/* Search button highlight */
+.header-reference-search__button {
+  background-color: #a8d935;
+}
+
+.header-reference-search__button:hover {
+  background-color: #95c500;
+}
+
+/* Menu link colors */
+.list-menu__item--link {
+  color: white;
+}
+
+.list-menu__item--link:hover {
+  color: #a8d935;
+}
+
+.header__account-text span {
+  color: white;
+}
+
+.header__account-text strong {
+  color: white;
+  font-weight: 600;
+}
