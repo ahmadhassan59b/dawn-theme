@@ -1,0 +1,291 @@
+/* New Header Styling for Mantis Innovation */
+
+.header {
+  background-color: #1a4d4d;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.header__logo {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__logo-image {
+  height: auto;
+  display: block;
+  max-width: 160px;
+}
+
+.header__search-bar-wrapper {
+  flex: 1;
+  min-width: 250px;
+  max-width: 500px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.search-bar__top-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.search-bar__input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  min-height: 40px;
+  font-family: inherit;
+}
+
+.search-bar__input:focus {
+  outline: none;
+  border-color: #a8d935;
+  box-shadow: 0 0 0 2px rgba(168, 217, 53, 0.1);
+}
+
+.search-bar__filter {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar__filter select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  min-height: 40px;
+  font-family: inherit;
+}
+
+.search-bar__filter select:focus {
+  outline: none;
+  border-color: #a8d935;
+}
+
+.search-bar__submit {
+  padding: 0.75rem 1rem;
+  background-color: #a8d935;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 18px;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar__submit:hover {
+  background-color: #95c500;
+}
+
+.header__action-list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header__action-item {
+  display: flex;
+  align-items: center;
+}
+
+.header__action-item-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.header__action-item-link:hover {
+  color: #a8d935;
+}
+
+.header__cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #a8d935;
+  color: #1a4d4d;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.nav-bar {
+  background-color: #1a4d4d;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-bar__inner {
+  padding: 0;
+}
+
+.nav-bar__linklist {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar__item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar__link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-bar__link:hover {
+  color: #a8d935;
+}
+
+.header__mobile-nav {
+  display: none;
+}
+
+.hidden-lap-and-up {
+  display: none !important;
+}
+
+.hidden-pocket {
+  display: none !important;
+}
+
+.hidden-tablet-and-up {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header__inner {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header__search-bar-wrapper {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    min-width: auto;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .header__action-list {
+    gap: 1rem;
+    order: 2;
+  }
+
+  .nav-bar__linklist {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hidden-pocket {
+    display: none !important;
+  }
+
+  .hidden-laptop {
+    display: block !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .header__inner {
+    padding: 0.75rem 0;
+  }
+
+  .header__search-bar-wrapper {
+    display: none;
+  }
+
+  .search-bar__input {
+    font-size: 16px;
+  }
+
+  .nav-bar__linklist {
+    gap: 0.5rem;
+  }
+
+  .nav-bar__link {
+    padding: 0.5rem 0;
+    font-size: 12px;
+  }
+
+  .header__action-item-link {
+    font-size: 12px;
+  }
+}
