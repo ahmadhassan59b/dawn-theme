@@ -1,8 +1,8 @@
-/* New Header Styling for Mantis Innovation */
+/* Mantis Innovation Global Header Styling */
 
-.header {
-  background-color: #1a4d4d;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.header-wrapper {
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -14,94 +14,99 @@
   padding: 0 20px;
 }
 
-.header__inner {
+.header-main {
+  background-color: white;
+  padding: 12px 0;
+}
+
+.header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1rem 0;
 }
 
-.header__logo {
+.header-logo {
   flex-shrink: 0;
-  margin: 0;
+  min-width: 150px;
 }
 
-.header__logo-link {
+.logo-link {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
 
-.header__logo-image {
+.logo-image {
   height: auto;
   display: block;
-  max-width: 160px;
-}
-
-.header__search-bar-wrapper {
-  flex: 1;
-  min-width: 250px;
-  max-width: 500px;
-}
-
-.search-bar {
-  display: flex;
-  gap: 0.5rem;
-  align-items: stretch;
-}
-
-.search-bar__top-wrapper {
-  display: flex;
-  gap: 0.5rem;
+  max-width: 140px;
   width: 100%;
 }
 
-.search-bar__input-wrapper {
+.logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a4d4d;
+}
+
+/* Search Bar Styling */
+.header-search {
   flex: 1;
+  min-width: 250px;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-wrapper {
   display: flex;
+  gap: 0.5rem;
   align-items: center;
 }
 
-.search-bar__input {
+.search-input {
   flex: 1;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
+  padding: 10px 12px;
+  border: 1px solid #999;
   border-radius: 4px;
   font-size: 14px;
-  min-height: 40px;
-  font-family: inherit;
+  min-height: 38px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: white;
 }
 
-.search-bar__input:focus {
+.search-input:focus {
   outline: none;
   border-color: #a8d935;
-  box-shadow: 0 0 0 2px rgba(168, 217, 53, 0.1);
+  box-shadow: 0 0 0 2px rgba(168, 217, 53, 0.15);
 }
 
-.search-bar__filter {
-  display: flex;
-  align-items: center;
+.search-input::placeholder {
+  color: #999;
 }
 
-.search-bar__filter select {
-  padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
+.search-filter {
+  padding: 10px 12px;
+  border: 1px solid #999;
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
   font-size: 14px;
-  min-height: 40px;
-  font-family: inherit;
+  min-height: 38px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #333;
+  flex-shrink: 0;
 }
 
-.search-bar__filter select:focus {
+.search-filter:focus {
   outline: none;
   border-color: #a8d935;
 }
 
-.search-bar__submit {
-  padding: 0.75rem 1rem;
+.search-button {
+  padding: 10px 14px;
   background-color: #a8d935;
   border: none;
   border-radius: 4px;
@@ -109,108 +114,271 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  min-height: 40px;
-  font-size: 18px;
+  min-width: 38px;
+  min-height: 38px;
+  font-size: 16px;
   transition: background-color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.search-bar__submit:hover {
+.search-button:hover {
   background-color: #95c500;
 }
 
-.header__action-list {
+.search-button:active {
+  background-color: #8ab400;
+}
+
+/* Header Actions (Account & Cart) */
+.header-actions {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
   flex-shrink: 0;
 }
 
-.header__action-item {
+.account-section {
   display: flex;
   align-items: center;
+  text-align: right;
 }
 
-.header__action-item-link {
-  color: white;
-  text-decoration: none;
+.account-login {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.account-login > span:first-child {
+  font-size: 12px;
+  color: #333;
+  font-weight: 400;
+}
+
+.account-link {
   font-size: 14px;
+  font-weight: 600;
+  color: #1a4d4d;
+  text-decoration: none;
   transition: color 0.2s ease;
-  position: relative;
 }
 
-.header__action-item-link:hover {
+.account-link:hover {
   color: #a8d935;
 }
 
-.header__cart-count {
+.cart-section {
+  display: flex;
+  align-items: center;
+}
+
+.cart-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #1a4d4d;
+  position: relative;
+  gap: 4px;
+}
+
+.cart-icon {
+  font-size: 20px;
+}
+
+.cart-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a4d4d;
+}
+
+.cart-count {
   position: absolute;
   top: -8px;
-  right: -8px;
-  background-color: #a8d935;
-  color: #1a4d4d;
-  font-size: 12px;
-  font-weight: 600;
+  right: -12px;
+  background-color: #1a4d4d;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
   padding: 2px 6px;
   border-radius: 10px;
   min-width: 20px;
   text-align: center;
+  line-height: 1;
 }
 
+.cart-link:hover .cart-label {
+  color: #a8d935;
+}
+
+/* Navigation Bar */
 .nav-bar {
   background-color: #1a4d4d;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-bar__inner {
+  border-top: 1px solid #0d3a3a;
   padding: 0;
 }
 
-.nav-bar__linklist {
+.nav-bar .container {
+  padding: 0 20px;
+}
+
+.nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 0;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.nav-bar__item {
+.nav-item {
   display: flex;
   align-items: center;
 }
 
-.nav-bar__link {
+.nav-link {
   color: white;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 0;
+  padding: 15px 16px;
   font-size: 14px;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.nav-bar__link:hover {
+.nav-link:hover {
+  background-color: rgba(168, 217, 53, 0.1);
   color: #a8d935;
 }
 
-.header__mobile-nav {
-  display: none;
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 4px;
+  display: inline-block;
 }
 
-.hidden-lap-and-up {
-  display: none !important;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-content {
+    gap: 1.5rem;
+  }
+
+  .header-actions {
+    gap: 1.5rem;
+  }
+
+  .header-search {
+    min-width: 200px;
+  }
+
+  .search-wrapper {
+    gap: 0.3rem;
+  }
 }
 
+@media (max-width: 768px) {
+  .header-main {
+    padding: 10px 0;
+  }
+
+  .header-content {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-logo {
+    order: 1;
+    flex-basis: auto;
+  }
+
+  .header-search {
+    order: 3;
+    flex-basis: 100%;
+    min-width: auto;
+  }
+
+  .header-actions {
+    order: 2;
+    gap: 1rem;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+  }
+
+  .account-login > span:first-child {
+    display: none;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    padding: 12px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+    min-width: 120px;
+  }
+
+  .logo-image {
+    max-width: 120px;
+  }
+
+  .header-search {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .header-actions {
+    gap: 0.8rem;
+  }
+
+  .account-section {
+    font-size: 12px;
+  }
+
+  .account-link {
+    font-size: 12px;
+  }
+
+  .cart-label {
+    font-size: 12px;
+  }
+
+  .search-input,
+  .search-filter,
+  .search-button {
+    font-size: 14px;
+    min-height: 36px;
+    padding: 8px 10px;
+  }
+
+  .nav-link {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .nav-menu {
+    gap: 0;
+  }
+}
+
+/* Utility Classes */
 .hidden-pocket {
   display: none !important;
 }
 
-.hidden-tablet-and-up {
+.hidden-lap {
   display: none !important;
 }
 
@@ -224,68 +392,4 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .header__inner {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .header__search-bar-wrapper {
-    order: 3;
-    flex-basis: 100%;
-    max-width: none;
-    min-width: auto;
-  }
-
-  .search-bar {
-    flex-direction: column;
-  }
-
-  .header__action-list {
-    gap: 1rem;
-    order: 2;
-  }
-
-  .nav-bar__linklist {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .hidden-pocket {
-    display: none !important;
-  }
-
-  .hidden-laptop {
-    display: block !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .header__inner {
-    padding: 0.75rem 0;
-  }
-
-  .header__search-bar-wrapper {
-    display: none;
-  }
-
-  .search-bar__input {
-    font-size: 16px;
-  }
-
-  .nav-bar__linklist {
-    gap: 0.5rem;
-  }
-
-  .nav-bar__link {
-    padding: 0.5rem 0;
-    font-size: 12px;
-  }
-
-  .header__action-item-link {
-    font-size: 12px;
-  }
 }

@@ -26,7 +26,7 @@
         "color_scheme": "scheme-1",
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "always",
         "show_line_separator": false,
         "enable_country_selector": false,
