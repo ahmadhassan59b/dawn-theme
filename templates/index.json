@@ -1,5 +1,9 @@
 {
   "sections": {
+    "merch_banner": {
+      "type": "merch-banner",
+      "settings": {}
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -200,6 +204,7 @@
     }
   },
   "order": [
+    "merch_banner",
     "image_banner",
     "rich_text",
     "featured_collection",

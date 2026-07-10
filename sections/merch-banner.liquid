@@ -1,0 +1,100 @@
+{{ 'merch-banner.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="merch-banner"
+  style="background-color: {{ section.settings.background_color }};{% if section.settings.background_image != blank %} background-image: url({{ section.settings.background_image | image_url: width: 3000 }});{% endif %}"
+>
+  <div class="merch-banner__pattern" aria-hidden="true"></div>
+  <div class="merch-banner__container">
+    <div class="merch-banner__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="merch-banner__heading" style="color: {{ section.settings.text_color }};">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+          class="merch-banner__button"
+          style="background-color: {{ section.settings.button_background_color }}; color: {{ section.settings.button_text_color }};"
+        >
+          {{- section.settings.button_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Merch banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Live, Work, and Play with Mantis Merch",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Shop All Products",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "default": "#d9e832",
+      "label": "Background color",
+      "info": "Used if no background image is set"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "default": "#1a4d4d",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "default": "#1a4d4d",
+      "label": "Button background color"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "default": "#d9e832",
+      "label": "Button text color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Merch banner"
+    }
+  ]
+}
+{% endschema %}
