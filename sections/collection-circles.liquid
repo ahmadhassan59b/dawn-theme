@@ -1,0 +1,160 @@
+{{ 'collection-circles.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-circles" style="background-color: {{ section.settings.background_color }};">
+  <div class="collection-circles__container">
+    <div class="collection-circles__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="collection-circles__heading" style="color: {{ section.settings.text_color }};">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.show_view_all -%}
+        <a
+          href="{{ section.settings.view_all_link | default: routes.collections_url }}"
+          class="collection-circles__view-all"
+          style="color: {{ section.settings.text_color }};"
+        >
+          {{- section.settings.view_all_label -}}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <ul class="collection-circles__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign circle_collection = block.settings.collection
+          assign circle_label = block.settings.label
+          if circle_label == blank and circle_collection != blank
+            assign circle_label = circle_collection.title
+          endif
+          assign circle_url = '#'
+          if circle_collection != blank
+            assign circle_url = circle_collection.url
+          endif
+        -%}
+        <li class="collection-circles__item-wrapper" {{ block.shopify_attributes }}>
+          <a href="{{ circle_url }}" class="collection-circles__item">
+            <span class="collection-circles__circle">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 400
+                  | image_tag: class: 'collection-circles__image', widths: '200, 300, 400', loading: 'lazy'
+                }}
+              {%- elsif circle_collection.featured_image != blank -%}
+                {{
+                  circle_collection.featured_image
+                  | image_url: width: 400
+                  | image_tag: class: 'collection-circles__image', widths: '200, 300, 400', loading: 'lazy'
+                }}
+              {%- else -%}
+                {{ 'collection-apparel-1' | placeholder_svg_tag: 'collection-circles__placeholder placeholder-svg' }}
+              {%- endif -%}
+            </span>
+            <span class="collection-circles__label" style="color: {{ section.settings.text_color }};">
+              {{- circle_label -}}
+              {%- if block.settings.show_arrow -%}
+                <span class="collection-circles__arrow">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+              {%- endif -%}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection circles",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Our collections",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "Show \"View all\" link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "default": "View all",
+      "label": "\"View all\" label"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "\"View all\" link",
+      "info": "Defaults to the all collections page if left blank"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "default": "#fdfbef",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "default": "#1a4d4d",
+      "label": "Text color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "Defaults to the collection's title if left blank"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Defaults to the collection's featured image if left blank"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "default": false,
+          "label": "Show arrow next to label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection circles",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -70,6 +70,25 @@
 
   <section class="color-{{ section.settings.color_scheme }} {% if section.settings.secondary_background %}background-secondary{% else %}gradient{% endif %}">
     <div class="page-width section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
+      {%- if section.settings.show_top_bar -%}
+        <div class="featured-product__top-bar">
+          {%- if section.settings.top_label != blank -%}
+            <p class="featured-product__top-label">{{ section.settings.top_label }}</p>
+          {%- endif -%}
+          {%- if section.settings.view_details_label != blank -%}
+            <a
+              {% if product == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ product.url }}"
+              {% endif %}
+              class="featured-product__top-view-details"
+            >
+              {{- section.settings.view_details_label -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
       <div class="featured-product product product--{{ section.settings.media_size }} grid grid--1-col gradient color-{{ section.settings.color_scheme }} product--{{ section.settings.media_position }}{% if section.settings.secondary_background == false %} isolate{% endif %} {% if product.media.size > 0 or section.settings.product == blank %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
           {%- unless placeholder -%}
@@ -450,17 +469,19 @@
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
             {%- endfor -%}
-            <a
-              {% if product == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ product.url }}"
-              {% endif %}
-              class="link product__view-details animate-arrow"
-            >
-              {{ 'products.product.view_full_details' | t }}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
-            </a>
+            {%- unless section.settings.show_top_bar -%}
+              <a
+                {% if product == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ product.url }}"
+                {% endif %}
+                class="link product__view-details animate-arrow"
+              >
+                {{ 'products.product.view_full_details' | t }}
+                {{- 'icon-arrow.svg' | inline_asset_content -}}
+              </a>
+            {%- endunless -%}
           </section>
         </div>
       </div>
@@ -1339,6 +1360,28 @@
       "type": "product",
       "id": "product",
       "label": "t:sections.featured-product.settings.product.label"
+    },
+    {
+      "type": "header",
+      "content": "Top bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_bar",
+      "default": true,
+      "label": "Show top label and \"view details\" link"
+    },
+    {
+      "type": "text",
+      "id": "top_label",
+      "default": "Featured product",
+      "label": "Top label"
+    },
+    {
+      "type": "text",
+      "id": "view_details_label",
+      "default": "View details",
+      "label": "\"View details\" link label"
     },
     {
       "type": "color_scheme",
