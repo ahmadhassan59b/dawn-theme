@@ -1,0 +1,80 @@
+/* Mantis Merch Home Banner */
+
+.merch-banner {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.merch-banner__pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.35) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.35) 25%, transparent 25%);
+  background-size: 70px 70px;
+  -webkit-mask-image: linear-gradient(to right, black 35%, transparent 100%);
+  mask-image: linear-gradient(to right, black 35%, transparent 100%);
+  pointer-events: none;
+}
+
+.merch-banner__container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  min-height: 420px;
+}
+
+.merch-banner__content {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  flex-shrink: 0;
+}
+
+.merch-banner__heading {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 32px;
+}
+
+.merch-banner__button {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.merch-banner__button:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 989px) {
+  .merch-banner__container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .merch-banner__content {
+    max-width: 100%;
+  }
+
+  .merch-banner__heading {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+}

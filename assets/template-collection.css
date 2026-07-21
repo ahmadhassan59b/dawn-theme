@@ -218,11 +218,8 @@
   font-weight: 600;
 }
 
-.collection-reference-display .is-active {
-  color: #111;
-}
-
 .collection-reference-layout .facets-vertical.page-width {
+  display: flex;
   align-items: flex-start;
   gap: 3rem;
 }

@@ -1,5 +1,132 @@
 {
   "sections": {
+    "merch_banner": {
+      "type": "merch-banner",
+      "settings": {}
+    },
+    "collection_circles": {
+      "type": "collection-circles",
+      "blocks": {
+        "drinkware": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Drinkware",
+            "show_arrow": false
+          }
+        },
+        "hats": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Hats",
+            "show_arrow": false
+          }
+        },
+        "polo-shirts": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Polo Shirts",
+            "show_arrow": false
+          }
+        },
+        "outerwear": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Outerwear",
+            "show_arrow": true
+          }
+        },
+        "golf": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Golf",
+            "show_arrow": false
+          }
+        },
+        "bags": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "label": "Bags",
+            "show_arrow": false
+          }
+        }
+      },
+      "block_order": [
+        "drinkware",
+        "hats",
+        "polo-shirts",
+        "outerwear",
+        "golf",
+        "bags"
+      ],
+      "settings": {
+        "heading": "Our collections",
+        "show_view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Includes: Stumptown Coffee Bag, Branded Miir 16 oz Vacuum Insulated Tumbler, Sahale Snack Bag, Branded 5 piece stainless steel straw set",
+            "text_style": "body"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "price": {
+          "type": "price"
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "none"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "text",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "buy_buttons"
+      ],
+      "settings": {
+        "show_top_bar": true,
+        "top_label": "Featured product",
+        "view_details_label": "View details",
+        "media_size": "medium",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -200,6 +327,9 @@
     }
   },
   "order": [
+    "merch_banner",
+    "collection_circles",
+    "featured_product",
     "image_banner",
     "rich_text",
     "featured_collection",

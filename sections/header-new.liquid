@@ -1,0 +1,284 @@
+{% comment %} Header with new structure - Mantis Innovation {% endcomment %}
+
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'custom-header.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'header-new-style.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<style>
+  .header {
+    background-color: #1a4d4d;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .header__logo {
+    flex-shrink: 0;
+    margin: 0;
+  }
+  
+  .header__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .header__logo-image {
+    height: auto;
+    display: block;
+  }
+  
+  .header__search-bar-wrapper {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+  }
+  
+  .search-bar {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .search-bar__input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-height: 40px;
+  }
+  
+  .search-bar__filter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar__filter select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    min-height: 40px;
+  }
+  
+  .search-bar__submit {
+    padding: 0.75rem 1rem;
+    background-color: #a8d935;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .search-bar__submit:hover {
+    background-color: #95c500;
+  }
+  
+  .header__action-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .header__action-item-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+  }
+  
+  .header__action-item-link:hover {
+    color: #a8d935;
+  }
+  
+  .nav-bar {
+    background-color: #1a4d4d;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-bar__linklist {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-bar__link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    font-size: 14px;
+  }
+  
+  .nav-bar__link:hover {
+    color: #a8d935;
+  }
+  
+  @media (max-width: 768px) {
+    .header__inner {
+      gap: 1rem;
+    }
+    
+    .header__search-bar-wrapper {
+      max-width: 200px;
+    }
+    
+    .search-bar {
+      flex-direction: column;
+    }
+    
+    .header__action-list {
+      gap: 1rem;
+    }
+    
+    .nav-bar__linklist {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<header class="header" role="banner">
+  <div class="container">
+    <div class="header__inner">
+      {% comment %} Mobile Menu Toggle {% endcomment %}
+      <nav class="header__mobile-nav hidden-lap-and-up">
+        <button class="header__mobile-nav-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Open menu">
+          ☰
+        </button>
+      </nav>
+      
+      {% comment %} Logo {% endcomment %}
+      <h1 class="header__logo">
+        <a href="{{ routes.root_url }}" class="header__logo-link">
+          <span class="visually-hidden">{{ shop.name }}</span>
+          {%- if settings.logo -%}
+            {% assign logo_alt = settings.logo.alt | default: shop.name | escape %}
+            {% assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio %}
+            {{ settings.logo | image_url: width: 560 | image_tag:
+              class: 'header__logo-image',
+              width: settings.logo_width,
+              height: logo_height,
+              alt: logo_alt,
+              style: 'max-width: ' | append: settings.logo_width | append: 'px'
+            }}
+          {%- else -%}
+            <span>{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </h1>
+      
+      {% comment %} Search Bar {% endcomment %}
+      <div class="header__search-bar-wrapper">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar">
+          <input type="hidden" name="type" value="product">
+          <div class="search-bar__top-wrapper">
+            <div class="search-bar__input-wrapper">
+              <input 
+                class="search-bar__input" 
+                type="text" 
+                name="q" 
+                autocomplete="off" 
+                autocorrect="off" 
+                aria-label="Search..." 
+                placeholder="Search..."
+              >
+            </div>
+            <div class="search-bar__filter">
+              <select name="type" id="search-product-type">
+                <option value="product" selected="selected">All categories</option>
+                <option value="article">Articles</option>
+                <option value="page">Pages</option>
+              </select>
+            </div>
+            <button type="submit" class="search-bar__submit" aria-label="Search">
+              🔍
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      {% comment %} Action Items (Account & Cart) {% endcomment %}
+      <div class="header__action-list">
+        <div class="header__action-item header__action-item--account">
+          {%- if shop.customer_accounts_enabled -%}
+            <a 
+              href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" 
+              class="header__action-item-link"
+              rel="nofollow"
+            >
+              <span>👤</span>
+              <span class="hidden-pocket hidden-lap">My account</span>
+            </a>
+          {%- endif -%}
+        </div>
+        
+        <div class="header__action-item header__action-item--cart">
+          <a 
+            href="{{ routes.cart_url }}" 
+            class="header__action-item-link"
+            id="cart-icon-bubble"
+          >
+            <span>🛒</span>
+            <span class="hidden-pocket hidden-lap">Cart</span>
+            {% if cart.item_count > 0 %}
+              <span class="header__cart-count">{{ cart.item_count }}</span>
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% comment %} Main Navigation {% endcomment %}
+  <nav class="nav-bar">
+    <div class="nav-bar__inner">
+      <div class="container">
+        <ul class="nav-bar__linklist" role="list">
+          {%- for link in linklists[section.settings.menu].links -%}
+            <li class="nav-bar__item">
+              <a href="{{ link.url }}" class="nav-bar__link">
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    }
+  ]
+}
+{% endschema %}
